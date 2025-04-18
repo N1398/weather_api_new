@@ -10,11 +10,11 @@ import org.apache.logging.log4j.LogManager;
 import com.example.weather.api.WeatherApiClient;
 import com.example.weather.dto.CurrentWeatherResponse;
 import com.example.weather.stub.WeatherApiStub;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import static com.example.weather.steps.CommonSteps.compareValues;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -76,9 +76,4 @@ public class PositiveTestSteps {
         assertThat(differences).isEmpty();
     }
 
-    private void compareValues(String field, String expected, String actual, Map<String, String> differences) {
-        if (!Objects.equals(expected, actual)) {
-            differences.put(field, String.format("expected '%s' but was '%s'", expected, actual));
-        }
-    }
 }
